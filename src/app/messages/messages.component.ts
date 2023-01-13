@@ -71,7 +71,8 @@ export class MessagesComponent implements OnInit, AfterViewInit {
   }
 
   parseDate(date: any) {
-    return new Date(date.seconds * 1000);
+    console.log('DATE :: ', typeof date);
+    return date.seconds ? new Date(date.seconds * 1000) : '';
   }
 
   openSnackBar(message: string, action: string) {
