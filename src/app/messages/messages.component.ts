@@ -17,6 +17,7 @@ export class MessagesComponent implements OnInit, AfterViewInit {
   userData: any = [];
   displayedColumns: string[] = ['id', 'name', 'message', 'date'];
   messagesData: any = [];
+  public isLoading = false;
 
   constructor(
     private dialog: MatDialog,
@@ -30,6 +31,7 @@ export class MessagesComponent implements OnInit, AfterViewInit {
   }
 
   getMessages() {
+    this.isLoading = true;
     this.userService
       .getTodoList()
       .get()
@@ -38,6 +40,7 @@ export class MessagesComponent implements OnInit, AfterViewInit {
           this.userData.push(doc.data());
           this.messagesData = this.userData;
           console.log('^^ UserData :: ', this.messagesData);
+          this.isLoading = false;
         });
       });
   }
@@ -51,16 +54,18 @@ export class MessagesComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe((data) => {
-      console.log('DATAA :: ', data);
+      this.isLoading = true;
       if (data) {
         this.openSnackBar('New Message Added Successfully !!', ' ');
         this.dataFromDialog = data.form;
         this.messagesData.push(data.form);
-        console.log(this.userData, this.messagesData, 'ssssssss');
+
         setTimeout(() => {
           this.messagesData = new MatTableDataSource<any>(this.messagesData);
+          this.isLoading = false;
         }, 1000);
       } else {
+        this.isLoading = false;
       }
     });
   }
@@ -73,6 +78,6 @@ export class MessagesComponent implements OnInit, AfterViewInit {
     this._snackBar.open(message, action);
     setTimeout(() => {
       this._snackBar.dismiss();
-    }, 2000);
+    }, 1000);
   }
 }

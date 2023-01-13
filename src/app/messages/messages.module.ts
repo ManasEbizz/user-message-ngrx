@@ -6,6 +6,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [MessagesComponent],
@@ -16,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatToolbarModule,
     MatSnackBarModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class MessagesModule {}
