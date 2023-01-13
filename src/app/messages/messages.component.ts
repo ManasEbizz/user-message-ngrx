@@ -39,9 +39,8 @@ export class MessagesComponent implements OnInit, AfterViewInit {
         querySnapshot.forEach((doc: any) => {
           this.userData.push(doc.data());
           this.messagesData = this.userData;
-          console.log('^^ UserData :: ', this.messagesData);
-          this.isLoading = false;
         });
+        console.log((this.isLoading = false));
       });
   }
 
@@ -71,8 +70,9 @@ export class MessagesComponent implements OnInit, AfterViewInit {
   }
 
   parseDate(date: any) {
-    console.log('DATE :: ', typeof date);
-    return date.seconds ? new Date(date.seconds * 1000) : '';
+    return date.seconds
+      ? new Date(date.seconds * 1000)
+      : new Date(date).toDateString();
   }
 
   openSnackBar(message: string, action: string) {
