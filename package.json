@@ -1,5 +1,5 @@
 {
-  "name": "task-test",
+  "name": "user-message-ngrx",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
