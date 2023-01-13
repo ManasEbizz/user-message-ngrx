@@ -1,0 +1,9 @@
+.header_dialog {
+  display: flex;
+  justify-content: space-between;
+}
+
+::ng-deep .mat-dialog-container {
+  height: 320px;
+  width: 280px;
+}

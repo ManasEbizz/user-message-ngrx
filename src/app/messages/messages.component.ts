@@ -5,6 +5,7 @@ import { MessagesPromptDialogueComponent } from '../messages-prompt-dialogue/mes
 import { UserService } from '../services/user.service';
 import { map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-messages',
@@ -25,6 +26,10 @@ export class MessagesComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
+    this.getMessages();
+  }
+
+  getMessages() {
     this.userService
       .getTodoList()
       .get()
@@ -51,7 +56,10 @@ export class MessagesComponent implements OnInit, AfterViewInit {
         this.openSnackBar('New Message Added Successfully !!', ' ');
         this.dataFromDialog = data.form;
         this.messagesData.push(data.form);
-        console.log(this.userData);
+        console.log(this.userData, this.messagesData, 'ssssssss');
+        setTimeout(() => {
+          this.messagesData = new MatTableDataSource<any>(this.messagesData);
+        }, 1000);
       } else {
       }
     });

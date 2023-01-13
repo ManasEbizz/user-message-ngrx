@@ -1,5 +1,8 @@
 <div class="form-container">
-  <h2 mat-dialog-title>Angular material dialog prompt</h2>
+  <div class="header_dialog">
+    <h2 mat-dialog-title>New Message</h2>
+    <button mat-icon-button (click)="dialogRef.close(false)">x</button>
+  </div>
   <mat-dialog-content>
     <form [formGroup]="form">
       <mat-form-field>
